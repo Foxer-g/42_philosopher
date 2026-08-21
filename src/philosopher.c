@@ -6,7 +6,7 @@
 /*   By: toespino <toespino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/20 02:47:46 by toespino          #+#    #+#             */
-/*   Updated: 2026/08/20 08:42:57 by toespino         ###   ########.fr       */
+/*   Updated: 2026/08/21 10:01:28 by f0xer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ static bool	p_eat(t_philo *philo)
 	*philo->last_eat = time;
 	pthread_mutex_unlock(philo->last_eat_lock);
 	usleep(philo->eat_time * 1000);
-	if (p_check_death(philo))
-		return (false);
 	p_r_lock_fork(philo, false);
 	p_l_lock_fork(philo, false);
+	if (p_check_death(philo))
+		return (false);
 	return (true);
 }
 
